@@ -1,23 +1,51 @@
+export const Patient = ({ patient, setPatient, deletePatient }) => {
+    const { petName, ownersName, email, date, symptoms, id } = patient;
+    const handleDelete = () => {
+        const response = confirm(
+            "Would you like to delete this patient entry?"
+        );
+        if (response) {
+            deletePatient(id);
+        }
+    };
 
-
-export const Patient = () => {
     return (
-        <div className='mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl'>
-                <p className='font-bold mb-3 text-gray-700 uppercase'>Name:{' '}
-                    <span className=' font-normal normal-case'>Marshall</span>
-                </p>
-                <p className='font-bold mb-3 text-gray-700 uppercase'>Owner:{' '}
-                    <span className=' font-normal normal-case'>Fausto</span>
-                </p>
-                <p className='font-bold mb-3 text-gray-700 uppercase'>Email:{' '}
-                    <span className=' font-normal normal-case'>mail@mail.com</span>
-                </p>
-                <p className='font-bold mb-3 text-gray-700 uppercase'>Discharde Date:{' '}
-                    <span className=' font-normal normal-case'>December 10th, 2021</span>
-                </p>
-                <p className='font-bold mb-3 text-gray-700 uppercase'>Symptoms:{' '}
-                    <span className=' font-normal normal-case'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis minus id vero? Voluptatibus consequatur veniam esse. Commodi eos cupiditate perspiciatis voluptate, aperiam assumenda hic veniam eveniet aliquam asperiores ducimus vero!</span>
-                </p>
+        <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
+            <p className="font-bold mb-3 text-gray-700 uppercase">
+                Name:{" "}
+                <span className=" font-normal normal-case">{petName}</span>
+            </p>
+            <p className="font-bold mb-3 text-gray-700 uppercase">
+                Owner:{" "}
+                <span className=" font-normal normal-case">{ownersName}</span>
+            </p>
+            <p className="font-bold mb-3 text-gray-700 uppercase">
+                Email: <span className=" font-normal normal-case">{email}</span>
+            </p>
+            <p className="font-bold mb-3 text-gray-700 uppercase">
+                Discharde Date:{" "}
+                <span className=" font-normal normal-case">{date}</span>
+            </p>
+            <p className="font-bold mb-3 text-gray-700 uppercase">
+                Symptoms:{" "}
+                <span className=" font-normal normal-case">{symptoms}</span>
+            </p>
+            <div className="flex justify-between mt-10">
+                <button
+                    type="button"
+                    className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                    onClick={() => setPatient(patient)}
+                >
+                    Edit
+                </button>
+                <button
+                    type="button"
+                    className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                    onClick={handleDelete}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
-    )
-}
+    );
+};
